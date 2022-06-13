@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "user-crud-chart.configMap" . }}
+data:
+  MONGO_HOST: {{ .Release.Name }}-{{ .Values.mongodb.nameOverride }}
+  DB_NAME: {{ .Values.mongodb_custom.default_database }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "user-crud-chart.secret" . }}
+type: Opaque
+data:
+  DB_USER: {{ .Values.mongodb.auth.rootUser | b64enc }}
+  DB_PASSWORD: {{ .Values.mongodb.auth.rootPassword | b64enc }}
