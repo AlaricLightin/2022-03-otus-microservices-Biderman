@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: nginx-podmonitor
+  labels:
+    app: kubernetes-ingress
+    name: nginx-nginx-ingress
+    namespace: default
+spec:
+  podMetricsEndpoints:
+  - interval: 30s
+    path: /metrics
+    port: prometheus
+  selector:
+    matchLabels:
+      app: nginx-nginx-ingress

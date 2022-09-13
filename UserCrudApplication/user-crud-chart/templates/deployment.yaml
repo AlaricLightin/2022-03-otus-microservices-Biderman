@@ -40,6 +40,7 @@ spec:
                   key: DB_PASSWORD
           ports:
             - containerPort: 8000
+              name: webapp
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness

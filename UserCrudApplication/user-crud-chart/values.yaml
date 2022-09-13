@@ -29,3 +29,7 @@ mongodb:
 
 mongodb_custom:
   default_database: simple_crud
+
+metrics:
+  serviceMonitor:
+    enabled: true
